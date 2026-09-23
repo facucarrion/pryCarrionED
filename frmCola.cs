@@ -10,14 +10,14 @@ using System.Windows.Forms;
 
 namespace pryCarrionED
 {
-    public partial class frmPila : Form
+    public partial class frmCola : Form
     {
-        public frmPila()
+        public frmCola()
         {
             InitializeComponent();
         }
 
-        clsPila objPila = new clsPila();
+        clsCola objCola = new clsCola();
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
@@ -28,37 +28,33 @@ namespace pryCarrionED
             objNodo.Tramite = txtTramite.Text;
             objNodo.Siguiente = null;
 
-            objPila.Agregar(objNodo);
-            objPila.Listar(lstListado);
-            objPila.ListarEnGrilla(dgvListado);
+            objCola.Agregar(objNodo);
+            objCola.Listar(lstListado);
+            objCola.ListarEnGrilla(dgvListado);
 
             txtCodigo.Clear();
-            txtNombre.Clear();
             txtTramite.Clear();
+            txtNombre.Clear();
             txtCodigo.Focus();
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-            if (objPila.Primero != null)
+            if (objCola.Primero != null)
             {
-                lblMuestraCodigo.Text = objPila.Primero.Codigo.ToString();
-                lblMuestraNombre.Text = objPila.Primero.Nombre;
-                lblMuestraTramite.Text = objPila.Primero.Tramite;
+                lblMuestraCodigo.Text = objCola.Primero.Codigo.ToString();
+                lblMuestraNombre.Text = objCola.Primero.Nombre;
+                lblMuestraTramite.Text = objCola.Primero.Tramite;
 
-                objPila.Eliminar();
+                objCola.Eliminar();
 
-                objPila.Listar(lstListado);
-                objPila.ListarEnGrilla(dgvListado);
+                objCola.Listar(lstListado);
+                objCola.ListarEnGrilla(dgvListado);
             }
             else
             {
-                MessageBox.Show("La pila está vacía");
+                MessageBox.Show("La cola está vacía");
             }
-
-            lblMuestraCodigo.Text = "";
-            lblMuestraNombre.Text = "";
-            lblMuestraTramite.Text = "";
         }
     }
 }

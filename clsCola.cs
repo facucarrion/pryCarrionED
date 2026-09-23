@@ -7,37 +7,25 @@ using System.Windows.Forms;
 
 namespace pryCarrionED
 {
-    internal class clsPila
+    internal class clsCola
     {
         private clsNodo primero;
         private clsNodo ultimo;
 
         internal clsNodo Primero { get => primero; set => primero = value; }
+        internal clsNodo Ultimo { get => ultimo; set => ultimo = value; }
 
         public void Agregar(clsNodo Nuevo)
         {
             if (Primero == null)
             {
                 Primero = Nuevo;
+                Ultimo = Nuevo;
             }
             else
             {
-                Nuevo.Siguiente = Primero;
-                Primero = Nuevo;
-            }
-
-        }
-
-        public void Eliminar()
-        {
-            if (Primero != null)
-            {
-                Primero = Primero.Siguiente;
-                MessageBox.Show("Se ha eliminado el primer nodo de la pila", "Eliminar Nodo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            else {
-                Primero = null;
-                MessageBox.Show("No hay nodos para eliminar", "Eliminar Nodo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Ultimo.Siguiente = Nuevo;
+                Ultimo = Nuevo;
             }
         }
 
@@ -49,7 +37,7 @@ namespace pryCarrionED
 
             while (aux != null)
             {
-                lstListado.Items.Add(aux.Codigo.ToString() + " | " + aux.Nombre + ", " + aux.Tramite);
+                lstListado.Items.Add(aux.Codigo + " " + aux.Nombre + ", " + aux.Tramite);
                 aux = aux.Siguiente;
             }
         }
@@ -63,13 +51,26 @@ namespace pryCarrionED
             while (aux != null)
             {
                 dgvListado.Rows.Add(
-                    aux.Codigo.ToString(),
+                    aux.Codigo,
                     aux.Nombre,
                     aux.Tramite
                 );
-
                 aux = aux.Siguiente;
             }
+        }
+
+        public void Eliminar()
+        {
+            if (Primero != null)
+            {
+                Primero = Primero.Siguiente;
+
+                if (Primero == null)
+                {
+                    Ultimo = null;
+                }
+            }
+
         }
     }
 }
