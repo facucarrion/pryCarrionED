@@ -40,5 +40,22 @@ namespace pryCarrionED
             frmListaDoblementeEnlazada frmListaDoblementeEnlazada = new frmListaDoblementeEnlazada();
             frmListaDoblementeEnlazada.Show();
         }
-    }
+
+        private void mostrarUnaTablaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmConsultasSQL frm = new frmConsultasSQL();
+            frm.Show();
+        }
+
+        private void consultaVariasOperacionesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmConsultaConOperaciones frm = new frmConsultaConOperaciones();
+            frm.Show();
+        }
+
+        private void operacionesEnBaseDeDatosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmOperaciones frm = new frmOperaciones();
+            frm.Show();
+        }    }
 }
